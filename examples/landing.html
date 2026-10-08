@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARworks arculat — minta nyitóoldal</title>
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../icons/icon-48.png" sizes="48x48">
+  <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../dist/arworks.css">
+  <style>
+    /* Csak a minta saját díszítése — a márka maga a dist/arworks.css-ben van. */
+    .hero-panel { position: relative; background: #0A0B0C; border: 1px solid var(--border-default); border-radius: var(--radius-md); aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center; isolation: isolate; }
+    .hero-panel::before { content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 48px 48px, linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 48px 48px;
+      -webkit-mask-image: radial-gradient(110% 90% at 60% 45%, #000 25%, transparent 78%); mask-image: radial-gradient(110% 90% at 60% 45%, #000 25%, transparent 78%); }
+    .hero-panel::after { content: ''; position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, rgba(239,84,34,.22), transparent 70%); z-index: -1; }
+    .hero-panel img { width: 58%; height: auto; display: block; }
+    .hero-panel .arw-mono-label { position: absolute; left: 16px; bottom: 14px; color: rgba(255,255,255,.6); }
+    .stat { border-top: 2px solid var(--border-accent); padding-top: 14px; }
+    .stat b { display: block; font-family: var(--font-display); font-weight: 300; font-size: 44px; letter-spacing: .06em; line-height: 1.1; }
+    .theme-toggle { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .swatch { height: 56px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); }
+  </style>
+</head>
+<body>
+
+<header class="arw-header">
+  <div class="arw-header__bar">
+    <a class="arw-header__logo" href="#" aria-label="ARworks">
+      <img class="arw-logo--onlight" src="../logos/arworks_logo_landscape_onlight.png" alt="ARworks" height="20">
+      <img class="arw-logo--ondark" src="../logos/arworks_logo_landscape_ondark.png" alt="" height="20">
+    </a>
+    <nav class="arw-nav" aria-label="Fő menü">
+      <a href="#munkak" class="is-active">Munkáink</a>
+      <a href="#megoldasok">Megoldások</a>
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#kapcsolat">Kapcsolat</a>
+    </nav>
+    <div class="arw-header__actions">
+      <div class="arw-lang" aria-label="Nyelv"><a class="is-active" href="#">HU</a><a href="#">EN</a></div>
+      <button class="arw-btn arw-btn--ghost arw-btn--sm theme-toggle" id="theme" type="button" aria-pressed="false">Sötét téma</button>
+      <a class="arw-btn arw-btn--primary arw-btn--sm" href="#kapcsolat">Projektet indítok</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HŐS: mono kicker → nagy, könnyű, nagybetűs Jost főcím → lede → egy elsődleges + egy körvonalas gomb -->
+  <section class="arw-sec arw-sec--hero">
+    <div class="arw-wrap arw-hero-grid">
+      <div>
+        <div class="arw-kicker">ARworks — Budapest · 2011 óta</div>
+        <h1 class="arw-display arw-display--xl" style="margin-top:16px">VR, AR, 3D és AI megoldások üzleti célokra</h1>
+        <p class="arw-lede arw-lede--lg">Egyedi fejlesztések, adaptálható platformok és kész szoftverek tréninghez, értékesítéshez, kiállításokhoz és ügyfélkiszolgáláshoz.</p>
+        <div class="arw-hero-actions">
+          <a class="arw-btn arw-btn--primary arw-btn--lg" href="#kapcsolat">Projektet indítok</a>
+          <a class="arw-btn arw-btn--outline arw-btn--lg" href="#munkak">Munkáink</a>
+        </div>
+        <p style="margin-top:20px"><a class="arw-arrow-link" href="#megoldasok">Segítsen megoldást választani →</a></p>
+      </div>
+      <div class="hero-panel">
+        <img src="../logos/arworks_logo_portrait_ondark.png" alt="ARworks logó — „A” betű, drótváz-mintával">
+        <span class="arw-mono-label">Hős-panel · minta</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SZÁMOK -->
+  <section class="arw-sec arw-sec--line" style="padding-top:56px;padding-bottom:56px">
+    <div class="arw-wrap arw-grid arw-grid--4">
+      <div class="stat"><b>2011</b><span class="arw-mono-label">alapítás óta</span></div>
+      <div class="stat"><b>Budapest</b><span class="arw-mono-label">stúdió</span></div>
+      <div class="stat"><b>VR · AR</b><span class="arw-mono-label">3D · AI</span></div>
+      <div class="stat"><b>HU · EN</b><span class="arw-mono-label">két nyelven</span></div>
+    </div>
+  </section>
+
+  <!-- KÁRTYÁK + CÍMKÉK -->
+  <section class="arw-sec arw-sec--line" id="munkak">
+    <div class="arw-wrap">
+      <div class="arw-sec-head-row">
+        <div>
+          <div class="arw-kicker">Munkáink</div>
+          <h2 class="arw-display arw-display--lg" style="margin-top:12px">Néhány projektünk</h2>
+          <p class="arw-lede">Minden kártya: mono kicker, könnyű nagybetűs cím, rövid leírás. A hover keretet vált, nem emelkedik.</p>
+        </div>
+        <a class="arw-btn arw-btn--outline arw-btn--md" href="#">Összes projekt</a>
+      </div>
+      <div class="arw-tag-row" style="margin:28px 0 24px">
+        <span class="arw-tag arw-tag--interactive arw-tag--selected">Mind</span>
+        <span class="arw-tag arw-tag--interactive">VR</span>
+        <span class="arw-tag arw-tag--interactive">AR</span>
+        <span class="arw-tag arw-tag--interactive">3D</span>
+        <span class="arw-tag arw-tag--interactive">AI</span>
+      </div>
+      <div class="arw-grid arw-grid--3">
+        <article class="arw-card arw-card--padded arw-card--accent arw-card--interactive">
+          <div class="arw-card__kicker">Egészségügy</div>
+          <h3 class="arw-card__title">VR-tréning</h3>
+          <p class="arw-lede" style="margin:0;font-size:14px">Kockázatmentes gyakorlás virtuális környezetben, mérhető eredménnyel.</p>
+        </article>
+        <article class="arw-card arw-card--padded arw-card--interactive">
+          <div class="arw-card__kicker">Védelem</div>
+          <h3 class="arw-card__title">AR-bemutató</h3>
+          <p class="arw-lede" style="margin:0;font-size:14px">Érintőképernyős és AR-es termékbemutató kiállításokra.</p>
+        </article>
+        <article class="arw-card arw-card--padded arw-card--interactive">
+          <div class="arw-card__kicker">Autóipar</div>
+          <h3 class="arw-card__title">3D-konfigurátor</h3>
+          <p class="arw-lede" style="margin:0;font-size:14px">Digitális autószalon: a vevő megnézi, mielőtt megérkezik az autó.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÖTÉT SÁV -->
+  <section class="arw-sec arw-sec--dark" id="megoldasok">
+    <div class="arw-wrap">
+      <div class="arw-kicker">Megoldások</div>
+      <h2 class="arw-display arw-display--lg" style="margin-top:12px">Nagy főcím, kevés szöveg</h2>
+      <p class="arw-lede">A sötét sáv a világos oldalon is használható; a lábléc mindig ilyen.</p>
+      <div class="arw-grid arw-grid--3" style="margin-top:36px">
+        <div class="arw-card arw-card--inverse arw-card--padded arw-card--interactive"><div class="arw-card__kicker">01</div><h3 class="arw-card__title">Tréning</h3></div>
+        <div class="arw-card arw-card--inverse arw-card--padded arw-card--interactive"><div class="arw-card__kicker">02</div><h3 class="arw-card__title">Értékesítés</h3></div>
+        <div class="arw-card arw-card--inverse arw-card--padded arw-card--interactive"><div class="arw-card__kicker">03</div><h3 class="arw-card__title">Kiállítás</h3></div>
+      </div>
+      <p style="margin-top:32px"><a class="arw-btn arw-btn--inverse arw-btn--md" href="#">Megoldások megtekintése</a></p>
+    </div>
+  </section>
+
+  <!-- ŰRLAP -->
+  <section class="arw-sec" id="kapcsolat">
+    <div class="arw-wrap arw-grid arw-grid--2" style="gap:48px;align-items:start">
+      <div>
+        <div class="arw-kicker">Kapcsolat</div>
+        <h2 class="arw-display arw-display--lg" style="margin-top:12px">Projektet indítok</h2>
+        <p class="arw-lede">Írja le röviden, mit szeretne elérni — válaszolunk.</p>
+      </div>
+      <form class="arw-card arw-card--padded" style="display:grid;gap:16px" onsubmit="return false">
+        <label class="arw-field"><span class="arw-field__label">Név</span><input class="arw-input" placeholder="Teljes név"></label>
+        <label class="arw-field"><span class="arw-field__label">E-mail</span><input class="arw-input" type="email" placeholder="nev@ceg.hu"><span class="arw-field__hint">Csak a válaszadáshoz használjuk.</span></label>
+        <label class="arw-field"><span class="arw-field__label">Üzenet</span><textarea class="arw-input" rows="3"></textarea></label>
+        <label class="arw-check"><input type="checkbox" checked><span class="arw-check__box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 5.2 4 7.6l4.5-5"/></svg></span>Elfogadom az adatkezelési tájékoztatót</label>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button class="arw-btn arw-btn--primary arw-btn--md" type="submit">Küldés</button>
+          <span class="arw-status arw-status--success">Mintaűrlap — nem küld semmit</span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="arw-footer">
+  <div class="arw-footer__grid">
+    <div>
+      <img src="../logos/arworks_logo_landscape_ondark.png" alt="ARworks" height="20" style="display:block">
+      <p class="arw-footer__desc">Budapesti VR-, AR-, 3D- és AI-fejlesztő stúdió 2011 óta.</p>
+    </div>
+    <div><div class="arw-footer__label">Oldalak</div><div class="arw-footer__col"><a href="#">Munkáink</a><a href="#">Megoldások</a><a href="#">Rólunk</a></div></div>
+    <div><div class="arw-footer__label">Szolgáltatások</div><div class="arw-footer__col"><a href="#">VR</a><a href="#">AR</a><a href="#">AI</a></div></div>
+    <div><div class="arw-footer__label">Kapcsolat</div><div class="arw-footer__col"><a href="https://arworks.hu">arworks.hu</a></div></div>
+  </div>
+  <div class="arw-footer__bottom"><span>© ARworks · mintaoldal, a szövegek helyőrzők</span><span>arworks.hu</span></div>
+</footer>
+
+<script>
+  // Téma váltása: <html data-theme="dark">. A választást a böngésző megjegyzi (ha engedi).
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('theme');
+    function apply(dark) {
+      if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.textContent = dark ? 'Világos téma' : 'Sötét téma';
+      document.querySelector('meta[name=theme-color]').content = dark ? '#0A0B0C' : '#ffffff';
+    }
+    var saved = null; try { saved = localStorage.getItem('arw-theme'); } catch (e) {}
+    apply(saved === 'dark');
+    btn.addEventListener('click', function () {
+      var dark = root.getAttribute('data-theme') !== 'dark';
+      apply(dark); try { localStorage.setItem('arw-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>

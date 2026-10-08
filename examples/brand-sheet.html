@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARworks arculat — márkalap</title>
+  <link rel="icon" href="../icons/icon-48.png" sizes="48x48">
+  <link rel="stylesheet" href="../dist/arworks.css">
+  <style>
+    .sw { border: 1px solid var(--border-default); border-radius: var(--radius-md); overflow: hidden; background: var(--surface-card); }
+    .sw i { display: block; height: 72px; }
+    .sw div { padding: 10px 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; line-height: 1.5; }
+    .sw b { display: block; font-weight: 700; color: var(--text-primary); }
+    .sw span { color: var(--text-secondary); }
+    .logo-tile { display: grid; place-items: center; min-height: 150px; padding: 28px; border: 1px solid var(--border-default); border-radius: var(--radius-md); }
+    .logo-tile img { max-width: 100%; max-height: 90px; width: auto; height: auto; }
+    .logo-tile--dark { background: #0A0B0C; }
+    .logo-tile--light { background: #fff; }
+    .logo-tile--orange { background: var(--orange-500); }
+    .cap { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; color: var(--text-muted); margin-top: 8px; }
+    .spec { border-top: 1px solid var(--border-default); padding: 20px 0; display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: baseline; }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    @media (max-width: 700px) { .spec { grid-template-columns: 1fr; gap: 8px; } }
+  </style>
+</head>
+<body>
+<header class="arw-header">
+  <div class="arw-header__bar">
+    <a class="arw-header__logo" href="#"><img class="arw-logo--onlight" src="../logos/arworks_logo_landscape_onlight.png" alt="ARworks" height="20"><img class="arw-logo--ondark" src="../logos/arworks_logo_landscape_ondark.png" alt="" height="20"></a>
+    <div class="arw-header__actions" style="margin-left:auto">
+      <span class="arw-mono-label">Márkalap v1</span>
+      <button class="arw-btn arw-btn--ghost arw-btn--sm" id="theme" type="button" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase">Sötét téma</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="arw-sec arw-sec--page-head">
+    <div class="arw-wrap">
+      <div class="arw-kicker">ARworks arculat</div>
+      <h1 class="arw-display arw-display--xl" style="margin-top:12px">Márkalap</h1>
+      <p class="arw-lede arw-lede--lg">Logók, színek, betűk és komponensek egy helyen. Minden érték a <code>dist/arworks.css</code>-ből jön — ez az oldal azt mutatja, amit más projektbe is át lehet venni.</p>
+    </div>
+  </section>
+
+  <!-- LOGÓK -->
+  <section class="arw-sec arw-sec--line">
+    <div class="arw-wrap">
+      <div class="arw-kicker">01 · Logó</div>
+      <h2 class="arw-display arw-display--lg" style="margin:12px 0 28px">Logó-változatok</h2>
+      <div class="arw-grid arw-grid--2">
+        <div><div class="logo-tile logo-tile--light"><img src="../logos/arworks_logo_landscape_onlight.png" alt="ARworks, fekvő, világos háttérre"></div><div class="cap">logos/arworks_logo_landscape_onlight.png — világos háttérre</div></div>
+        <div><div class="logo-tile logo-tile--dark"><img src="../logos/arworks_logo_landscape_ondark.png" alt="ARworks, fekvő, sötét háttérre"></div><div class="cap">logos/arworks_logo_landscape_ondark.png — sötét háttérre</div></div>
+        <div><div class="logo-tile logo-tile--dark"><img src="../logos/arworks_logo_portrait_ondark.png" alt="ARworks, álló, sötét háttérre" style="max-height:130px"></div><div class="cap">logos/arworks_logo_portrait_ondark.png — álló, sötét háttérre (narancs „A”, fehér WORKS)</div></div>
+        <div><div class="logo-tile logo-tile--orange"><img src="../logos/arworks_logo_portrait_white.png" alt="ARworks, álló, egyszínű fehér" style="max-height:130px"></div><div class="cap">logos/arworks_logo_portrait_white.png — egyszínű fehér (vízjelnek, képre, narancs alapra)</div></div>
+      </div>
+      <p class="arw-lede">Fejlécben a fekvő logó <b>20 px magas</b>. Körülötte legalább a logó „A” betűjének fele szabad hely maradjon. Ne nyújtsd, ne színezd át, ne tegyél rá árnyékot, és ne tedd a világos változatot világos, a sötétet sötét háttérre.</p>
+    </div>
+  </section>
+
+  <!-- SZÍNEK -->
+  <section class="arw-sec arw-sec--line">
+    <div class="arw-wrap">
+      <div class="arw-kicker">02 · Szín</div>
+      <h2 class="arw-display arw-display--lg" style="margin:12px 0 8px">Narancs + tiszta szürke</h2>
+      <p class="arw-lede" style="margin-bottom:28px">A márka egyetlen kiemelő színe a narancs. Nagy felületen ritka; jellemzően gomb, kicker, aláhúzás, kiemelt keret.</p>
+      <div class="arw-mono-label" style="margin-bottom:10px">Márkanarancs</div>
+      <div class="arw-grid" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:28px" id="orange"></div>
+      <div class="arw-mono-label" style="margin-bottom:10px">Semleges</div>
+      <div class="arw-grid" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:28px" id="grays"></div>
+      <div class="arw-mono-label" style="margin-bottom:10px">Állapot (szűken)</div>
+      <div class="arw-grid" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px" id="status"></div>
+    </div>
+  </section>
+
+  <!-- BETŰK -->
+  <section class="arw-sec arw-sec--line">
+    <div class="arw-wrap">
+      <div class="arw-kicker">03 · Betű</div>
+      <h2 class="arw-display arw-display--lg" style="margin:12px 0 24px">Három betűcsalád, három szerep</h2>
+      <div class="spec"><div><div class="arw-mono-label">Display · Jost 300</div><div class="cap">NAGYBETŰS · betűköz 0,08 em</div></div><div class="arw-display arw-display--xl">Mutassa meg az autót</div></div>
+      <div class="spec"><div><div class="arw-mono-label">Törzs · Space Grotesk</div><div class="cap">16 / 1,55 · lede 19 px</div></div><div><p class="arw-lede arw-lede--lg" style="margin:0 0 10px">Egyedi fejlesztések, adaptálható platformok és kész szoftverek tréninghez, értékesítéshez.</p><p style="margin:0;color:var(--text-secondary)">Törzsszöveg: tiszta, jól olvasható, nem túl hosszú sorokkal (legfeljebb 70 karakter).</p></div></div>
+      <div class="spec"><div><div class="arw-mono-label">Címke · Space Mono</div><div class="cap">12 px · NAGYBETŰS · 0,14 em</div></div><div class="row"><span class="arw-kicker">ARworks — Budapest · 2011 óta</span><span class="arw-tag">Jelvény</span><span class="arw-mono-label">Technikai felirat</span></div></div>
+    </div>
+  </section>
+
+  <!-- KOMPONENSEK -->
+  <section class="arw-sec arw-sec--line">
+    <div class="arw-wrap">
+      <div class="arw-kicker">04 · Komponens</div>
+      <h2 class="arw-display arw-display--lg" style="margin:12px 0 24px">Gomb, kártya, címke, mező</h2>
+      <div class="spec"><div class="arw-mono-label">Gombok</div>
+        <div class="row">
+          <button class="arw-btn arw-btn--primary arw-btn--md">Elsődleges</button>
+          <button class="arw-btn arw-btn--secondary arw-btn--md">Másodlagos</button>
+          <button class="arw-btn arw-btn--outline arw-btn--md">Körvonalas</button>
+          <button class="arw-btn arw-btn--ghost arw-btn--md">Szellem</button>
+          <button class="arw-btn arw-btn--primary arw-btn--md" disabled>Letiltva</button>
+          <span style="background:#000;padding:10px 14px;border-radius:2px"><button class="arw-btn arw-btn--inverse arw-btn--md">Inverz (sötét sávon)</button></span>
+        </div></div>
+      <div class="spec"><div class="arw-mono-label">Kártyák</div>
+        <div class="arw-grid arw-grid--3">
+          <div class="arw-card arw-card--padded"><div class="arw-card__kicker">Alap</div><h3 class="arw-card__title">Kártya</h3><p style="margin:0;font-size:14px;color:var(--text-secondary)">Hajszálkeret, 4 px sarok.</p></div>
+          <div class="arw-card arw-card--padded arw-card--accent arw-card--interactive"><div class="arw-card__kicker">Kiemelt</div><h3 class="arw-card__title">Narancs felső vonal</h3><p style="margin:0;font-size:14px;color:var(--text-secondary)">Hover: keretet vált.</p></div>
+          <div class="arw-card arw-card--padded arw-card--inverse"><div class="arw-card__kicker">Inverz</div><h3 class="arw-card__title">Sötét kártya</h3><p style="margin:0;font-size:14px;color:rgba(255,255,255,.66)">Sötét sávra.</p></div>
+        </div></div>
+      <div class="spec"><div class="arw-mono-label">Címkék, állapot</div>
+        <div class="row">
+          <span class="arw-tag">Alap</span><span class="arw-tag arw-tag--interactive">Kattintható</span><span class="arw-tag arw-tag--interactive arw-tag--selected">Kijelölt</span>
+          <span class="arw-status arw-status--success">Sikeres</span><span class="arw-status arw-status--warning">Figyelem</span><span class="arw-status arw-status--danger">Hiba</span>
+        </div></div>
+      <div class="spec"><div class="arw-mono-label">Űrlap</div>
+        <div class="arw-grid arw-grid--2" style="max-width:640px">
+          <label class="arw-field"><span class="arw-field__label">Név</span><input class="arw-input" placeholder="Teljes név"><span class="arw-field__hint">Súgó szöveg</span></label>
+          <label class="arw-field"><span class="arw-field__label">Üzenet</span><textarea class="arw-input" rows="2"></textarea></label>
+          <label class="arw-check"><input type="checkbox" checked><span class="arw-check__box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 5.2 4 7.6l4.5-5"/></svg></span>Jelölve</label>
+          <label class="arw-check"><input type="checkbox"><span class="arw-check__box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 5.2 4 7.6l4.5-5"/></svg></span>Jelöletlen</label>
+        </div></div>
+    </div>
+  </section>
+
+  <!-- ELRENDEZÉS -->
+  <section class="arw-sec arw-sec--line">
+    <div class="arw-wrap">
+      <div class="arw-kicker">05 · Elrendezés</div>
+      <h2 class="arw-display arw-display--lg" style="margin:12px 0 24px">Térköz, sarok, mozgás</h2>
+      <div class="spec"><div class="arw-mono-label">Térköz (4 px alap)</div><div class="row" style="align-items:flex-end" id="space"></div></div>
+      <div class="spec"><div class="arw-mono-label">Sarok</div><div class="row">
+        <div class="logo-tile" style="min-height:70px;width:110px;padding:8px;border-radius:0">0</div>
+        <div class="logo-tile" style="min-height:70px;width:110px;padding:8px;border-radius:2px">2 px — mező, gomb</div>
+        <div class="logo-tile" style="min-height:70px;width:110px;padding:8px;border-radius:4px">4 px — kártya</div>
+        <div class="logo-tile" style="min-height:70px;width:110px;padding:8px;border-radius:999px">pill — címke</div></div></div>
+      <div class="spec"><div class="arw-mono-label">Tartalomoszlop</div><div>1160 px (fejléc sávja: 1360 px); szekció: 80 px fent/lent, 32 px oldalt (telefonon 56 / 24).</div></div>
+      <div class="spec"><div class="arw-mono-label">Mozgás</div><div>Gyors, csendes: 120 ms (hover), 200 ms, 350 ms; <code>cubic-bezier(0.16, 1, 0.3, 1)</code>. A hover színt/keretet vált, nem emelkedést. <code>prefers-reduced-motion</code> mellett nincs animáció.</div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="arw-footer"><div class="arw-footer__bottom" style="margin-top:0;border-top:0"><span>© ARworks · márkalap</span><span>arworks.hu</span></div></footer>
+
+<script>
+  var cs = getComputedStyle(document.documentElement);
+  function v(n) { return cs.getPropertyValue(n).trim(); }
+  function sw(host, items) {
+    var el = document.getElementById(host);
+    items.forEach(function (n) {
+      var d = document.createElement('div'); d.className = 'sw';
+      d.innerHTML = '<i style="background:var(--' + n + ')"></i><div><b>' + n + '</b><span>' + (v('--' + n) || '') + '</span></div>';
+      el.appendChild(d);
+    });
+  }
+  sw('orange', ['orange-050','orange-100','orange-200','orange-300','orange-400','orange-500','orange-600','orange-700','orange-800']);
+  sw('grays', ['black','gray-950','gray-900','gray-800','gray-700','gray-600','gray-500','gray-400','gray-300','gray-200','gray-100','gray-050','white']);
+  sw('status', ['green-600','green-050','amber-600','amber-050','red-600','red-050']);
+  [1,2,3,4,5,6,7,8,9].forEach(function (i) {
+    var px = v('--space-' + i), d = document.createElement('div');
+    d.style.cssText = 'text-align:center;font-family:var(--font-mono);font-size:10px;color:var(--text-muted)';
+    d.innerHTML = '<div style="width:' + px + ';height:' + px + ';background:var(--orange-500);margin:0 auto 6px"></div>' + i + '<br>' + px;
+    document.getElementById('space').appendChild(d);
+  });
+  // téma váltás (a swatch-felirat értékei világos témára vonatkoznak: ezek az alap skálák, nem fordulnak át)
+  var root = document.documentElement, btn = document.getElementById('theme');
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') !== 'dark';
+    if (dark) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+    btn.textContent = dark ? 'Világos téma' : 'Sötét téma';
+  });
+</script>
+</body>
+</html>

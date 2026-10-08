@@ -1,0 +1,427 @@
+/*! ARworks brand v1.0.0 — teljes csomag (betűk + tokenek + alap + komponensek + elrendezés)
+ *  GENERÁLT FÁJL (node scripts/build.mjs) — a forrás a src/ mappában van. Licenc: lásd LICENSE.
+ *  https://github.com/Sabolo100/arworks-brand */
+/* ARworks — betűk (Google Fonts, OFL-licenc).
+   Display: Jost 300 — a WORKS szövegjel vékony, geometrikus talpatlan betűjét közelíti.
+   Törzs/UI: Space Grotesk. Technikai címkék, kickerek: Space Mono.
+   Éles, EU-s oldalon érdemes saját szerverről kiszolgálni (npm: @fontsource/jost,
+   @fontsource/space-grotesk, @fontsource/space-mono) — lásd README „Betűk”. */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ============================================================
+   ARworks design tokens — az EGYETLEN igazságforrás.
+   Innen készül a dist/tokens.json, a Tailwind-preset és a Tailwind v4 @theme
+   (node scripts/build.mjs). A nevek megegyeznek az arworks.hu weboldaléval,
+   így a két rendszer felcserélhető.
+
+   Szabály: a márka egyetlen kiemelő színe a narancs (#EF5422, a logó „A” betűje).
+   A semleges skála tiszta (hidegmentes) szürke; az állapotszínek ritkán kellenek.
+   ============================================================ */
+
+:root {
+  /* Alap — márka */
+  --orange-050: #FEF1EC;
+  --orange-100: #FCDFD3;
+  --orange-200: #F9BCA4;
+  --orange-300: #F5936C;
+  --orange-400: #F2703F;
+  --orange-500: #EF5422; /* márkanarancs — a logó „A” betűje */
+  --orange-600: #D3431A; /* szöveghez világos háttéren (kontraszt) */
+  --orange-700: #AC3512;
+  --orange-800: #7F270D;
+
+  /* Alap — semleges */
+  --black: #000000;
+  --gray-950: #111111;
+  --gray-900: #1A1A1A;
+  --gray-800: #2B2B2B;
+  --gray-700: #404040;
+  --gray-600: #5C5C5C;
+  --gray-500: #7A7A7A;
+  --gray-400: #9E9E9E;
+  --gray-300: #C4C4C4;
+  --gray-200: #E0E0E0;
+  --gray-100: #EFEFEF;
+  --gray-050: #F7F7F7;
+  --white: #FFFFFF;
+
+  /* Alap — állapot (szűken használd; a narancs marad az egyetlen márkaszín) */
+  --green-600: #157A46;
+  --green-050: #E9F6EF;
+  --amber-600: #B77400;
+  --amber-050: #FCF3E2;
+  --red-600: #C22B1C;
+  --red-050: #FCECEA;
+
+  /* Szemantikus — szöveg */
+  --text-primary: var(--gray-950);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-400);
+  --text-accent: var(--orange-500);
+  --text-inverse: var(--white);
+  --text-inverse-secondary: rgba(255, 255, 255, 0.64);
+  --text-on-secondary: var(--white);
+
+  /* Szemantikus — felületek */
+  --surface-page: var(--white);
+  --surface-subtle: var(--gray-050);
+  --surface-card: var(--white);
+  --surface-inverse: var(--black);
+  --surface-inverse-raised: var(--gray-900);
+  --surface-accent: var(--orange-500);
+  --surface-accent-subtle: var(--orange-050);
+  --surface-hover: var(--gray-050);
+  --surface-active: var(--gray-100);
+
+  /* Szemantikus — keretek */
+  --border-default: var(--gray-200);
+  --border-strong: var(--gray-950);
+  --border-accent: var(--orange-500);
+  --border-inverse: rgba(255, 255, 255, 0.24);
+
+  /* Szemantikus — interaktív */
+  --action-primary: var(--orange-500);
+  --action-primary-hover: var(--orange-600);
+  --action-primary-active: var(--orange-700);
+  --action-secondary: var(--gray-950);
+  --action-secondary-hover: var(--gray-800);
+  --action-secondary-active: var(--gray-700);
+  --focus-ring: 0 0 0 2px var(--white), 0 0 0 4px var(--orange-500);
+
+  /* Szemantikus — állapot */
+  --status-success: var(--green-600);
+  --status-success-bg: var(--green-050);
+  --status-warning: var(--amber-600);
+  --status-warning-bg: var(--amber-050);
+  --status-danger: var(--red-600);
+  --status-danger-bg: var(--red-050);
+
+  /* Betűk */
+  --font-display: 'Jost', 'Century Gothic', 'Futura', sans-serif;
+  --font-body: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  /* Címbetű-skála — könnyű (300) vastagság, NAGYBETŰS, széles betűköz (a szövegjel hangja) */
+  --display-xl-size: 64px;
+  --display-lg-size: 44px;
+  --display-md-size: 30px;
+  --display-weight: 300;
+  --display-line: 1.1;
+  --display-tracking: 0.08em;
+
+  /* Törzsszöveg-skála */
+  --text-lg-size: 19px;
+  --text-md-size: 16px;
+  --text-sm-size: 14px;
+  --text-xs-size: 12px;
+  --body-line: 1.55;
+
+  /* Címke (kicker, jelvény, technikai felirat): mono, nagybetű */
+  --label-size: 12px;
+  --label-tracking: 0.14em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Térköz — 4 px-es alap */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Lekerekítés — műszaki, többnyire éles; pill csak címkéknek/kapcsolóknak */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+
+  /* Keretvastagság — hajszálvonalas „drótváz” nyelv */
+  --border-w: 1px;
+  --border-w-strong: 2px;
+
+  /* Árnyék és mozgás — lapos, vonalvezérelt rendszer: az árnyék ritka és puha,
+     a hover színt/keretet vált, nem emelkedést */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.18);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 350ms;
+
+  /* Elrendezés */
+  --wrap-max: 1160px;
+  --wrap-wide: 1360px;
+}
+
+/* ------------------------------------------------------------
+   Sötét téma — a portfóliók „ink” árnyalataiból (#0A0B0C / #101214 / #171A1D).
+   Bekapcsolás: <html data-theme="dark"> vagy bármely tároló .arw-dark osztállyal.
+   Csak a szemantikus tokenek fordulnak át; az alap skálák (orange-*, gray-*) maradnak.
+   ------------------------------------------------------------ */
+[data-theme='dark'],
+.arw-dark {
+  color-scheme: dark;
+
+  --text-primary: var(--white);
+  --text-secondary: rgba(255, 255, 255, 0.66);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-accent: var(--orange-500);
+  --text-inverse: var(--white);
+  --text-inverse-secondary: rgba(255, 255, 255, 0.66);
+  --text-on-secondary: var(--black);
+
+  --surface-page: #0A0B0C;
+  --surface-subtle: #101214;
+  --surface-card: #101214;
+  --surface-inverse: #000000;
+  --surface-inverse-raised: #171A1D;
+  --surface-accent: var(--orange-500);
+  --surface-accent-subtle: rgba(239, 84, 34, 0.12);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-active: rgba(255, 255, 255, 0.10);
+
+  --border-default: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.40);
+  --border-accent: var(--orange-500);
+  --border-inverse: rgba(255, 255, 255, 0.24);
+
+  --action-secondary: var(--white);
+  --action-secondary-hover: var(--gray-200);
+  --action-secondary-active: var(--gray-300);
+  --focus-ring: 0 0 0 2px #0A0B0C, 0 0 0 4px var(--orange-500);
+
+  --status-success: #3DD68C;
+  --status-success-bg: rgba(61, 214, 140, 0.12);
+  --status-warning: #F5B93A;
+  --status-warning-bg: rgba(245, 185, 58, 0.12);
+  --status-danger: #FF6B5B;
+  --status-danger-bg: rgba(255, 107, 91, 0.12);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* ARworks — alapréteg. Csak elemszelektorokat érint, ezért a `.arw` osztályú tárolóra
+   szűkítve is használható (lásd README „Meglévő oldalba”): a body-szabályok a
+   `.arw-base`-re is érvényesek. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body, .arw-base {
+  font-family: var(--font-body);
+  font-size: var(--text-md-size);
+  line-height: var(--body-line);
+  color: var(--text-primary);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+}
+body { margin: 0; min-height: 100vh; }
+
+a { color: var(--text-primary); text-decoration: none; }
+a:hover { color: var(--orange-600); text-decoration: underline; }
+[data-theme='dark'] a:hover, .arw-dark a:hover { color: var(--orange-400); }
+
+::selection { background: var(--orange-100); color: var(--black); }
+[data-theme='dark'] ::selection, .arw-dark ::selection { background: rgba(239, 84, 34, 0.4); color: var(--white); }
+
+img { max-width: 100%; }
+button { font-family: var(--font-body); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* ARworks — komponensek. Minden osztály `arw-` előtagú, hogy ne ütközzön más projekt
+   stílusaival. Az arworks.hu weboldal design-system komponenskönyvtárából. */
+
+/* ---------- Gomb ---------- */
+.arw-btn { font-family: var(--font-body); font-weight: var(--weight-medium); border-radius: var(--radius-sm); border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1; text-decoration: none; transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.arw-btn:hover { text-decoration: none; }
+.arw-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.arw-btn[disabled] { opacity: 0.4; pointer-events: none; }
+.arw-btn--sm { font-size: 13px; padding: 8px 14px; }
+.arw-btn--md { font-size: 14px; padding: 11px 20px; }
+.arw-btn--lg { font-size: 16px; padding: 14px 28px; }
+.arw-btn--primary { background: var(--action-primary); color: var(--white); }
+.arw-btn--primary:hover { background: var(--action-primary-hover); color: var(--white); }
+.arw-btn--primary:active { background: var(--action-primary-active); }
+.arw-btn--secondary { background: var(--action-secondary); color: var(--text-on-secondary); }
+.arw-btn--secondary:hover { background: var(--action-secondary-hover); color: var(--text-on-secondary); }
+.arw-btn--secondary:active { background: var(--action-secondary-active); }
+.arw-btn--outline { background: transparent; border-color: var(--border-strong); color: var(--text-primary); }
+.arw-btn--outline:hover { background: var(--surface-hover); color: var(--text-primary); }
+.arw-btn--outline:active { background: var(--surface-active); }
+.arw-btn--ghost { background: transparent; color: var(--text-primary); }
+.arw-btn--ghost:hover { background: var(--surface-hover); color: var(--text-primary); }
+.arw-btn--ghost:active { background: var(--surface-active); }
+/* sötét sávra/képre kerülő körvonalas gomb */
+.arw-btn--inverse { background: transparent; border-color: rgba(255, 255, 255, 0.4); color: var(--white); }
+.arw-btn--inverse:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.arw-btn--full { width: 100%; }
+
+/* ---------- Kártya ---------- */
+.arw-card { background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); }
+.arw-card--padded { padding: var(--space-5); }
+.arw-card--accent { border-top: 2px solid var(--border-accent); }
+.arw-card--featured { border: 2px solid var(--border-strong); }
+.arw-card--inverse { background: var(--surface-inverse); border-color: var(--border-inverse); color: var(--white); }
+.arw-card--interactive { cursor: pointer; transition: border-color var(--duration-fast) var(--ease-out); }
+.arw-card--interactive:hover { border-color: var(--border-strong); }
+.arw-card--inverse.arw-card--interactive:hover { border-color: var(--white); }
+.arw-card__kicker { font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--orange-600); margin-bottom: var(--space-2); }
+.arw-card--inverse .arw-card__kicker, [data-theme='dark'] .arw-card__kicker, .arw-dark .arw-card__kicker { color: var(--orange-500); }
+.arw-card__title { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 22px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 var(--space-2); }
+.arw-card__photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+
+/* ---------- Címke (tag / pill) ---------- */
+.arw-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); color: var(--text-secondary); background: transparent; transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out); }
+.arw-tag--interactive { cursor: pointer; }
+.arw-tag--interactive:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.arw-tag--selected { border-color: var(--border-accent); color: var(--orange-600); }
+[data-theme='dark'] .arw-tag--selected, .arw-dark .arw-tag--selected { color: var(--orange-400); }
+.arw-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- Beviteli mező ---------- */
+.arw-field { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-body); }
+.arw-field__label { font-size: 13px; font-weight: var(--weight-medium); color: var(--text-primary); }
+.arw-field__hint { font-size: 12px; color: var(--text-muted); }
+.arw-input { font-family: var(--font-body); font-size: 14px; color: var(--text-primary); background: var(--surface-page); border: 1px solid var(--border-default); border-radius: var(--radius-sm); padding: 10px 12px; transition: border-color var(--duration-fast) var(--ease-out); }
+.arw-input::placeholder { color: var(--text-muted); }
+.arw-input:hover { border-color: var(--gray-400); }
+.arw-input:focus { outline: none; border-color: var(--border-strong); box-shadow: var(--focus-ring); }
+textarea.arw-input { resize: vertical; line-height: 1.5; }
+
+/* ---------- Jelölőnégyzet ----------
+   <label class="arw-check"><input type="checkbox"><span class="arw-check__box"><svg …/></span> Felirat</label> */
+.arw-check { display: inline-flex; align-items: flex-start; gap: 10px; cursor: pointer; font-family: var(--font-body); font-size: 14px; color: var(--text-primary); position: relative; }
+.arw-check input { position: absolute; opacity: 0; width: 0; height: 0; }
+.arw-check__box { width: 16px; height: 16px; flex: none; margin-top: 2px; border: 1px solid var(--gray-400); border-radius: var(--radius-sm); background: var(--surface-page); display: inline-flex; align-items: center; justify-content: center; color: var(--white); transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.arw-check:hover .arw-check__box { border-color: var(--border-strong); }
+.arw-check input:focus-visible + .arw-check__box { box-shadow: var(--focus-ring); }
+.arw-check input:checked + .arw-check__box { background: var(--orange-500); border-color: var(--orange-500); }
+.arw-check__box svg { opacity: 0; transition: opacity var(--duration-fast) var(--ease-out); }
+.arw-check input:checked + .arw-check__box svg { opacity: 1; }
+
+/* ---------- Állapotjelző ---------- */
+.arw-status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 6px 12px; border-radius: var(--radius-sm); border: 1px solid transparent; }
+.arw-status--success { color: var(--status-success); background: var(--status-success-bg); }
+.arw-status--warning { color: var(--status-warning); background: var(--status-warning-bg); }
+.arw-status--danger { color: var(--status-danger); background: var(--status-danger-bg); }
+
+/* ---------- Tipográfiai segédek ---------- */
+.arw-kicker { font-family: var(--font-mono); font-size: var(--label-size); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--orange-600); }
+.arw-kicker--ondark, [data-theme='dark'] .arw-kicker, .arw-dark .arw-kicker { color: var(--orange-500); }
+.arw-kicker--muted { color: var(--text-muted); }
+.arw-mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-muted); }
+.arw-display { font-family: var(--font-display); font-weight: var(--display-weight); line-height: var(--display-line); letter-spacing: var(--display-tracking); text-transform: uppercase; margin: 0; }
+.arw-display--xl { font-size: var(--display-xl-size); }
+.arw-display--lg { font-size: var(--display-lg-size); }
+.arw-display--md { font-size: var(--display-md-size); }
+.arw-lede { font-size: var(--text-md-size); color: var(--text-secondary); max-width: 70ch; margin: 14px 0 0; }
+.arw-lede--lg { font-size: var(--text-lg-size); }
+.arw-arrow-link { font-size: 13px; font-weight: var(--weight-medium); color: var(--orange-600); }
+[data-theme='dark'] .arw-arrow-link, .arw-dark .arw-arrow-link { color: var(--orange-400); }
+.arw-rule { width: 64px; height: 3px; background: var(--orange-500); border: 0; margin: 0 0 var(--space-5); }
+
+@media (max-width: 900px) {
+  .arw-display--xl { font-size: 40px; }
+  .arw-display--lg { font-size: 34px; }
+  .arw-display--md { font-size: 26px; }
+}
+@media (max-width: 640px) {
+  .arw-display--xl { font-size: 32px; }
+  .arw-display--lg { font-size: 28px; }
+  .arw-display--md { font-size: 22px; }
+}
+
+/* ---------- Logó-váltó ----------
+   Fejlécbe/oldalsávba tedd mindkét változatot; a téma kiválasztja a megfelelőt — JS nélkül:
+   <img class="arw-logo--onlight" src="…landscape_onlight.png"> <img class="arw-logo--ondark" src="…landscape_ondark.png">
+   (A mindig sötét láblécbe csak az ondark kell, osztály nélkül.) */
+.arw-logo--ondark { display: none; }
+[data-theme='dark'] .arw-logo--onlight, .arw-dark .arw-logo--onlight { display: none; }
+[data-theme='dark'] .arw-logo--ondark, .arw-dark .arw-logo--ondark { display: block; }
+
+/* ARworks — elrendezés: tartalomoszlop, szekciók, rács, fejléc, lábléc.
+   Az arworks.hu oldalvázának egyszerűsített, keretrendszer-független változata. */
+
+.arw-wrap { max-width: var(--wrap-max); margin: 0 auto; }
+.arw-wrap--wide { max-width: var(--wrap-wide); }
+
+/* ---------- Szekciók ---------- */
+.arw-sec { padding: 80px 32px; }
+.arw-sec--line { border-top: 1px solid var(--border-default); }
+.arw-sec--hero { padding: 88px 32px 80px; }
+.arw-sec--page-head { padding: 72px 32px 40px; }
+.arw-sec--subtle { background: var(--surface-subtle); }
+/* sötét sáv: világos oldalon is sötét (a láblécben is ez a hang) */
+.arw-sec--dark { background: var(--surface-inverse); color: var(--white); position: relative; overflow: hidden; }
+.arw-sec--dark .arw-display { color: var(--white); }
+.arw-sec--dark .arw-lede { color: var(--text-inverse-secondary); }
+.arw-sec--dark .arw-kicker { color: var(--orange-500); }
+.arw-sec-head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+
+/* ---------- Rácsok ---------- */
+.arw-grid { display: grid; gap: 24px; }
+.arw-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.arw-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.arw-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.arw-grid--g12 { gap: 12px; }
+.arw-grid--g16 { gap: 16px; }
+.arw-grid--g20 { gap: 20px; }
+/* hős: szöveg + kép */
+.arw-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.arw-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+/* ---------- Fejléc ---------- */
+.arw-header { position: sticky; top: 0; z-index: 40; background: var(--surface-page); border-bottom: 1px solid var(--border-default); }
+.arw-header__bar { max-width: var(--wrap-wide); margin: 0 auto; min-height: 66px; display: flex; align-items: center; gap: 12px; padding: 8px 24px; flex-wrap: wrap; }
+.arw-header__logo { display: flex; align-items: center; }
+.arw-header__logo img { height: 20px; }
+.arw-nav { display: flex; align-items: center; margin-left: auto; justify-content: flex-end; flex-wrap: nowrap; }
+.arw-nav a { border-bottom: 2px solid transparent; font-size: 13px; font-weight: var(--weight-medium); color: var(--text-primary); padding: 10px 6px 8px; white-space: nowrap; text-decoration: none; }
+.arw-nav a:hover { color: var(--orange-600); text-decoration: none; }
+[data-theme='dark'] .arw-nav a:hover, .arw-dark .arw-nav a:hover { color: var(--orange-400); }
+.arw-nav a.is-active { border-bottom-color: var(--orange-500); }
+.arw-header__actions { display: flex; align-items: center; gap: 8px; }
+.arw-lang { display: flex; border: 1px solid var(--border-default); border-radius: var(--radius-sm); overflow: hidden; }
+.arw-lang a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; padding: 6px 7px; background: var(--surface-page); color: var(--text-secondary); text-decoration: none; line-height: 1.4; }
+.arw-lang a:hover { color: var(--text-primary); }
+.arw-lang a.is-active { background: var(--text-primary); color: var(--surface-page); }
+
+/* ---------- Lábléc (mindig sötét) ----------
+   A max-width +64 px: a belső 32 px-es oldalpadding után a tartalom pontosan a 1160 px-es .arw-wrap-pal egy vonalban kezdődik. */
+.arw-footer { background: var(--black); color: var(--white); border-top: 1px solid var(--border-inverse); }
+.arw-footer a { color: var(--white); text-decoration: none; }
+.arw-footer a:hover { color: var(--orange-500); text-decoration: none; }
+.arw-footer__grid { max-width: calc(var(--wrap-max) + 64px); margin: 0 auto; padding: 64px 32px 0; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; }
+.arw-footer__desc { font-size: 14px; color: rgba(255, 255, 255, 0.64); margin: 18px 0 0; max-width: 38ch; }
+.arw-footer__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: rgba(255, 255, 255, 0.64); margin-bottom: 14px; }
+.arw-footer__col { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; font-size: 14px; }
+.arw-footer__bottom { max-width: calc(var(--wrap-max) + 64px); margin: 32px auto 0; padding: 20px 32px; border-top: 1px solid var(--border-inverse); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.64); }
+
+@media (max-width: 1080px) {
+  .arw-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .arw-footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .arw-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .arw-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .arw-sec, .arw-sec--hero, .arw-sec--page-head { padding-left: 24px; padding-right: 24px; }
+  .arw-nav { display: none; } /* kis képernyőn a projekt saját menüje (hamburger) veszi át */
+}
+@media (max-width: 640px) {
+  .arw-grid--2, .arw-grid--3, .arw-grid--4 { grid-template-columns: 1fr; }
+  .arw-sec { padding-top: 56px; padding-bottom: 56px; }
+  .arw-footer__grid { grid-template-columns: 1fr; }
+}

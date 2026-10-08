@@ -1,0 +1,65 @@
+/* ARworks — Tailwind v4 téma. GENERÁLT FÁJL (node scripts/build.mjs) — ne szerkeszd kézzel.
+ *
+ *   @import 'tailwindcss';
+ *   @import './arworks-brand/dist/arworks-tokens.css';   (a szemantikus változók és a sötét téma)
+ *   @import './arworks-brand/dist/tailwind-v4.css';
+ *
+ * Utána: bg-brand, text-ink, bg-surface, border-line, font-display, tracking-display, rounded-sm …
+ */
+@theme {
+  --color-orange-50: #FEF1EC;
+  --color-orange-100: #FCDFD3;
+  --color-orange-200: #F9BCA4;
+  --color-orange-300: #F5936C;
+  --color-orange-400: #F2703F;
+  --color-orange-500: #EF5422;
+  --color-orange-600: #D3431A;
+  --color-orange-700: #AC3512;
+  --color-orange-800: #7F270D;
+  --color-gray-50: #F7F7F7;
+  --color-gray-100: #EFEFEF;
+  --color-gray-200: #E0E0E0;
+  --color-gray-300: #C4C4C4;
+  --color-gray-400: #9E9E9E;
+  --color-gray-500: #7A7A7A;
+  --color-gray-600: #5C5C5C;
+  --color-gray-700: #404040;
+  --color-gray-800: #2B2B2B;
+  --color-gray-900: #1A1A1A;
+  --color-gray-950: #111111;
+  --color-brand: #EF5422;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-ink: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-ink-accent: var(--text-accent);
+  --color-ink-inverse: var(--text-inverse);
+  --color-surface: var(--surface-page);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-card: var(--surface-card);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-accent: var(--surface-accent);
+  --color-line: var(--border-default);
+  --color-line-strong: var(--border-strong);
+  --color-line-accent: var(--border-accent);
+  --color-line-inverse: var(--border-inverse);
+  --color-action: var(--action-primary);
+  --color-action-hover: var(--action-primary-hover);
+  --color-action-active: var(--action-primary-active);
+  --color-success: var(--status-success);
+  --color-warning: var(--status-warning);
+  --color-danger: var(--status-danger);
+  --font-display: 'Jost', 'Century Gothic', 'Futura', sans-serif;
+  --font-body: 'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --tracking-display: 0.08em;
+  --tracking-label: 0.14em;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.18);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

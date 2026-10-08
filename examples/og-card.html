@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>ARworks — megosztási kártya (Open Graph, 1200×630)</title>
+  <!--
+    Sablon a közösségi megosztási képhez (og:image / twitter:image), 1200×630 px.
+    Használat: írd át a három szöveget (.k, h1, p), nyisd meg böngészőben, és készíts róla
+    pontosan 1200×630-as képernyőképet / PNG-t (pl. Playwright: page.setViewportSize({width:1200,height:630})).
+    A szöveget és a logót a sablon teszi rá — AI-generált képen a felirat és a logó torzulna.
+  -->
+  <link rel="stylesheet" href="../dist/arworks.css">
+  <style>
+    html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #000; }
+    .c { position: relative; width: 1200px; height: 630px; padding: 60px 72px 56px; display: flex; flex-direction: column; color: #fff; overflow: hidden; }
+    .wm { position: absolute; right: -90px; top: -70px; height: 640px; opacity: .07; }
+    .k { font-family: var(--font-mono); font-size: 19px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange-500); }
+    h1 { font-family: var(--font-display); font-weight: 300; font-size: 62px; line-height: 1.08; letter-spacing: .06em; text-transform: uppercase; margin: 24px 0 0; max-width: 16ch; }
+    p { font-size: 23px; line-height: 1.45; color: rgba(255,255,255,.66); margin: 24px 0 0; max-width: 50ch; }
+    .f { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+    .f img { height: 30px; display: block; }
+    .u { font-family: var(--font-mono); font-size: 18px; letter-spacing: .12em; color: rgba(255,255,255,.72); }
+  </style>
+</head>
+<body>
+  <div class="c">
+    <img class="wm" src="../logos/arworks_logo_portrait_white.png" alt="">
+    <hr class="arw-rule" style="width:64px;height:3px;margin:0 0 26px">
+    <div class="k">ARworks · Budapest · 2011 óta</div>
+    <h1>VR, AR, 3D és AI megoldások üzleti célokra</h1>
+    <p>Egyedi fejlesztések, adaptálható platformok és kész szoftverek tréninghez, értékesítéshez, kiállításokhoz és ügyfélkiszolgáláshoz.</p>
+    <div class="f"><img src="../logos/arworks_logo_landscape_ondark.png" alt="ARworks"><span class="u">arworks.hu</span></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+/* ARworks — betűk (Google Fonts, OFL-licenc).
+   Display: Jost 300 — a WORKS szövegjel vékony, geometrikus talpatlan betűjét közelíti.
+   Törzs/UI: Space Grotesk. Technikai címkék, kickerek: Space Mono.
+   Éles, EU-s oldalon érdemes saját szerverről kiszolgálni (npm: @fontsource/jost,
+   @fontsource/space-grotesk, @fontsource/space-mono) — lásd README „Betűk”. */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');

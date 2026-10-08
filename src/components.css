@@ -1,0 +1,110 @@
+/* ARworks — komponensek. Minden osztály `arw-` előtagú, hogy ne ütközzön más projekt
+   stílusaival. Az arworks.hu weboldal design-system komponenskönyvtárából. */
+
+/* ---------- Gomb ---------- */
+.arw-btn { font-family: var(--font-body); font-weight: var(--weight-medium); border-radius: var(--radius-sm); border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; line-height: 1; text-decoration: none; transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.arw-btn:hover { text-decoration: none; }
+.arw-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.arw-btn[disabled] { opacity: 0.4; pointer-events: none; }
+.arw-btn--sm { font-size: 13px; padding: 8px 14px; }
+.arw-btn--md { font-size: 14px; padding: 11px 20px; }
+.arw-btn--lg { font-size: 16px; padding: 14px 28px; }
+.arw-btn--primary { background: var(--action-primary); color: var(--white); }
+.arw-btn--primary:hover { background: var(--action-primary-hover); color: var(--white); }
+.arw-btn--primary:active { background: var(--action-primary-active); }
+.arw-btn--secondary { background: var(--action-secondary); color: var(--text-on-secondary); }
+.arw-btn--secondary:hover { background: var(--action-secondary-hover); color: var(--text-on-secondary); }
+.arw-btn--secondary:active { background: var(--action-secondary-active); }
+.arw-btn--outline { background: transparent; border-color: var(--border-strong); color: var(--text-primary); }
+.arw-btn--outline:hover { background: var(--surface-hover); color: var(--text-primary); }
+.arw-btn--outline:active { background: var(--surface-active); }
+.arw-btn--ghost { background: transparent; color: var(--text-primary); }
+.arw-btn--ghost:hover { background: var(--surface-hover); color: var(--text-primary); }
+.arw-btn--ghost:active { background: var(--surface-active); }
+/* sötét sávra/képre kerülő körvonalas gomb */
+.arw-btn--inverse { background: transparent; border-color: rgba(255, 255, 255, 0.4); color: var(--white); }
+.arw-btn--inverse:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.arw-btn--full { width: 100%; }
+
+/* ---------- Kártya ---------- */
+.arw-card { background: var(--surface-card); border: 1px solid var(--border-default); border-radius: var(--radius-md); }
+.arw-card--padded { padding: var(--space-5); }
+.arw-card--accent { border-top: 2px solid var(--border-accent); }
+.arw-card--featured { border: 2px solid var(--border-strong); }
+.arw-card--inverse { background: var(--surface-inverse); border-color: var(--border-inverse); color: var(--white); }
+.arw-card--interactive { cursor: pointer; transition: border-color var(--duration-fast) var(--ease-out); }
+.arw-card--interactive:hover { border-color: var(--border-strong); }
+.arw-card--inverse.arw-card--interactive:hover { border-color: var(--white); }
+.arw-card__kicker { font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--orange-600); margin-bottom: var(--space-2); }
+.arw-card--inverse .arw-card__kicker, [data-theme='dark'] .arw-card__kicker, .arw-dark .arw-card__kicker { color: var(--orange-500); }
+.arw-card__title { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 22px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 var(--space-2); }
+.arw-card__photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+
+/* ---------- Címke (tag / pill) ---------- */
+.arw-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); color: var(--text-secondary); background: transparent; transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out); }
+.arw-tag--interactive { cursor: pointer; }
+.arw-tag--interactive:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.arw-tag--selected { border-color: var(--border-accent); color: var(--orange-600); }
+[data-theme='dark'] .arw-tag--selected, .arw-dark .arw-tag--selected { color: var(--orange-400); }
+.arw-tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- Beviteli mező ---------- */
+.arw-field { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-body); }
+.arw-field__label { font-size: 13px; font-weight: var(--weight-medium); color: var(--text-primary); }
+.arw-field__hint { font-size: 12px; color: var(--text-muted); }
+.arw-input { font-family: var(--font-body); font-size: 14px; color: var(--text-primary); background: var(--surface-page); border: 1px solid var(--border-default); border-radius: var(--radius-sm); padding: 10px 12px; transition: border-color var(--duration-fast) var(--ease-out); }
+.arw-input::placeholder { color: var(--text-muted); }
+.arw-input:hover { border-color: var(--gray-400); }
+.arw-input:focus { outline: none; border-color: var(--border-strong); box-shadow: var(--focus-ring); }
+textarea.arw-input { resize: vertical; line-height: 1.5; }
+
+/* ---------- Jelölőnégyzet ----------
+   <label class="arw-check"><input type="checkbox"><span class="arw-check__box"><svg …/></span> Felirat</label> */
+.arw-check { display: inline-flex; align-items: flex-start; gap: 10px; cursor: pointer; font-family: var(--font-body); font-size: 14px; color: var(--text-primary); position: relative; }
+.arw-check input { position: absolute; opacity: 0; width: 0; height: 0; }
+.arw-check__box { width: 16px; height: 16px; flex: none; margin-top: 2px; border: 1px solid var(--gray-400); border-radius: var(--radius-sm); background: var(--surface-page); display: inline-flex; align-items: center; justify-content: center; color: var(--white); transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
+.arw-check:hover .arw-check__box { border-color: var(--border-strong); }
+.arw-check input:focus-visible + .arw-check__box { box-shadow: var(--focus-ring); }
+.arw-check input:checked + .arw-check__box { background: var(--orange-500); border-color: var(--orange-500); }
+.arw-check__box svg { opacity: 0; transition: opacity var(--duration-fast) var(--ease-out); }
+.arw-check input:checked + .arw-check__box svg { opacity: 1; }
+
+/* ---------- Állapotjelző ---------- */
+.arw-status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; padding: 6px 12px; border-radius: var(--radius-sm); border: 1px solid transparent; }
+.arw-status--success { color: var(--status-success); background: var(--status-success-bg); }
+.arw-status--warning { color: var(--status-warning); background: var(--status-warning-bg); }
+.arw-status--danger { color: var(--status-danger); background: var(--status-danger-bg); }
+
+/* ---------- Tipográfiai segédek ---------- */
+.arw-kicker { font-family: var(--font-mono); font-size: var(--label-size); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--orange-600); }
+.arw-kicker--ondark, [data-theme='dark'] .arw-kicker, .arw-dark .arw-kicker { color: var(--orange-500); }
+.arw-kicker--muted { color: var(--text-muted); }
+.arw-mono-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--text-muted); }
+.arw-display { font-family: var(--font-display); font-weight: var(--display-weight); line-height: var(--display-line); letter-spacing: var(--display-tracking); text-transform: uppercase; margin: 0; }
+.arw-display--xl { font-size: var(--display-xl-size); }
+.arw-display--lg { font-size: var(--display-lg-size); }
+.arw-display--md { font-size: var(--display-md-size); }
+.arw-lede { font-size: var(--text-md-size); color: var(--text-secondary); max-width: 70ch; margin: 14px 0 0; }
+.arw-lede--lg { font-size: var(--text-lg-size); }
+.arw-arrow-link { font-size: 13px; font-weight: var(--weight-medium); color: var(--orange-600); }
+[data-theme='dark'] .arw-arrow-link, .arw-dark .arw-arrow-link { color: var(--orange-400); }
+.arw-rule { width: 64px; height: 3px; background: var(--orange-500); border: 0; margin: 0 0 var(--space-5); }
+
+@media (max-width: 900px) {
+  .arw-display--xl { font-size: 40px; }
+  .arw-display--lg { font-size: 34px; }
+  .arw-display--md { font-size: 26px; }
+}
+@media (max-width: 640px) {
+  .arw-display--xl { font-size: 32px; }
+  .arw-display--lg { font-size: 28px; }
+  .arw-display--md { font-size: 22px; }
+}
+
+/* ---------- Logó-váltó ----------
+   Fejlécbe/oldalsávba tedd mindkét változatot; a téma kiválasztja a megfelelőt — JS nélkül:
+   <img class="arw-logo--onlight" src="…landscape_onlight.png"> <img class="arw-logo--ondark" src="…landscape_ondark.png">
+   (A mindig sötét láblécbe csak az ondark kell, osztály nélkül.) */
+.arw-logo--ondark { display: none; }
+[data-theme='dark'] .arw-logo--onlight, .arw-dark .arw-logo--onlight { display: none; }
+[data-theme='dark'] .arw-logo--ondark, .arw-dark .arw-logo--ondark { display: block; }

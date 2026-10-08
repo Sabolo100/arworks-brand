@@ -1,0 +1,16 @@
+{
+  "name": "arworks-brand",
+  "version": "1.0.0",
+  "description": "ARworks arculat: logók, ikonok, design tokenek (CSS, JSON, Tailwind), komponens-CSS, példaoldalak és Claude-skill.",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/Sabolo100/arworks-brand",
+  "repository": { "type": "git", "url": "git+https://github.com/Sabolo100/arworks-brand.git" },
+  "style": "dist/arworks.css",
+  "files": ["dist", "logos", "icons", "social", "src", "examples", "claude", "BRAND.md", "LICENSE"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check"
+  },
+  "engines": { "node": ">=18" }
+}
